@@ -1,0 +1,14 @@
+[project]
+name = "ab-engine"
+version = "0.1.0"
+description = "A/B testing simulation CLI tool"
+authors = [{ name = "Aslan Onalbek", email= "aslan.onalbek@nu.edu.kz" }]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+	"scipy>=1.11",
+	"numpy>=1.26"
+]
+
+[project.scripts]
+run-experiment = "src.run_experiment:main"
