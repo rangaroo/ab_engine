@@ -6,11 +6,7 @@ def generate_user_data(num_users, p_A, p_B):
         group = "A" if random.random() <= 0.5 else "B"
         user_id = i
         converted = get_conversion_outcome(group, p_A, p_B)
-        data.append({
-            "user_id": user_id,
-            "group": group,
-            "converted": converted
-        })
+        data.append((user_id, group, converted))
 
     return data
 
