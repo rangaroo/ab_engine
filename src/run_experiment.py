@@ -1,14 +1,25 @@
 import argparse
 from simulator import generate_user_data
-from db import insert_experiment
+from db import insert_data
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--name", required=True)
-parser.add_argument("--num_users", type=int, required=True)
-parser.add_argument("--p_A", type=float, required=True)
-parser.add_argument("--p_B", type=float, required=True)
+def main():
+    # Pass arguments from CLI
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--name", required=True)
+    parser.add_argument("--num_users", type=int, required=True)
+    parser.add_argument("--p_A", type=float, required=True)
+    parser.add_argument("--p_B", type=float, required=True)
 
-args = parser.parse_args()
+    args = parser.parse_args()
 
-data = generate_user_data(args.num_users, args.p_A, args.p_B)
-insert_experiment(args.name, data)
+    # Assign CLI inputs to variables
+    experiment_name = args.name
+    num_users = args.num_users
+    p_A = args.p_A
+    p_B = args.p_B
+
+    # Generate and insert data into database
+    data = generate_user_data(num_users, p_A, p_B)
+    insert_data(experiment_name, data)
+
+main()
